@@ -53,15 +53,11 @@ export default function ProductScreen() {
             <li>
               <h1 className="text-lg"> {product.name}</h1>
             </li>
-            <li>Ангилал: {product.category}</li>
-            <li>Бренд: {product.brand}</li>
-            <li>Үнэлгээ: {product.rating}</li>
-            <li>Тоо ширхэг: {product.numReviews}</li>
-            <li>Тайлбар: {product.description}</li>
+            <li className="text-xl">Үнэлгээ: {product.rating}</li>
+            <li className="text-xl">Тоо ширхэг: {product.numReviews}</li>
+            <li className="text-xl">Тайлбар: {product.description}</li>
           </ul>
-        </div>
-        <div className="card my-2">
-          <div className="mb-2 flex justify-between">
+          <div className="my-12 ">
             <div className="border shadow-lg  p-6 ">
               <p>Үнэ: {product.price}</p>
               <div
@@ -72,7 +68,6 @@ export default function ProductScreen() {
                 Төлөв: {product.countInStock > 0 ? "Боломжтой" : "Анги үлдсэн"}
               </div>
               <div>
-                {" "}
                 <button
                   type="button"
                   className="p-2 mt-4 w-full bg-yellow-500  rounded-md"
