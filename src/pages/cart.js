@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Store } from "../../utils/Store";
 import Layouts from "@/components/Layouts";
-
+import Link from "next/link";
 export default function Cart() {
   const { state, dispatch } = useContext(Store);
   const [count, setCount] = useState(0);
@@ -36,7 +36,7 @@ export default function Cart() {
       {cartItems.length === 0 ? (
         <div>
           {" "}
-          Сагс хоосон байна <a href="/">Буцах</a>{" "}
+          Сагс хоосон байна <Link href="/">Буцах</Link>{" "}
         </div>
       ) : (
         <div className="grid md:grid-cols-4 md:gap-5">
