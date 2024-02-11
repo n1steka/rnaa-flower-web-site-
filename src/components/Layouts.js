@@ -15,7 +15,7 @@ export default function Layouts({ children, title }) {
       <div className="flex min-h-screen flex-col justify-between">
         <header>
           <nav className="flex h-[80px] p-12  items-center  justify-between  shadow-md ">
-            <Link href="/" className=" text-lg font-bold ml-[60px]">
+            <Link href="/" className="   text-lg sm:text-md font-bold ">
               Цэцэгийн танилцууллага
             </Link>
             <div className="">
