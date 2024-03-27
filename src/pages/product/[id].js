@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Layouts from "@/components/Layouts";
-import data from "../../../utils/data";
 import Link from "next/link";
 import Image from "next/image";
 import { Store } from "../../../utils/Store";

@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { Store } from "../../utils/Store";
 export default function Layouts({ children, title }) {
-  const { state } = useContext(Store);
-  const { cart } = state;
+  // const { state } = useContext(Store);
+  // const { cart } = state;
   return (
     <div>
       <Head>
@@ -19,7 +18,7 @@ export default function Layouts({ children, title }) {
               Цэцэгийн танилцууллага
             </Link>
             <div className="">
-              <Link href="/cart" className="p-2">
+              {/* <Link href="/cart" className="p-2">
                 Сагс{" "}
                 {cart.cartItems.length === 0 ? null : (
                   <span className=" ml-2 p-1  rounded-full  bg-slate-400">
@@ -27,7 +26,7 @@ export default function Layouts({ children, title }) {
                     {cart.cartItems.length}
                   </span>
                 )}{" "}
-              </Link>
+              </Link> */}
               <Link href="/login">Нэвтрэх</Link>
             </div>
           </nav>

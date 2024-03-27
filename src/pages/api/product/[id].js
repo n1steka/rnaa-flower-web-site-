@@ -1,5 +1,5 @@
 import connectDB from "../../../../utils/db";
-import { handleGetDetailRequest, handleGetRequest, handleGetRequestDetail, handlePostRequest } from "../../../../utils/controller/product-controller";
+import { handleGetDetailRequest, handlePostRequest } from "../../../../utils/controller/product-controller";
 import util from 'util';
 import upload from "../../../../utils/middleware/fileupload";
 export const config = {
