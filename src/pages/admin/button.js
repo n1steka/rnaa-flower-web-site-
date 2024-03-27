@@ -1,5 +1,4 @@
 import React from "react";
-import { IconType } from "react-icons";
 
 const Button = ({
     label,
@@ -7,7 +6,6 @@ const Button = ({
     outline,
     small,
     custom,
-    icon: Icon,
     onClick,
 }) => {
     return (
@@ -22,7 +20,6 @@ const Button = ({
                     ${custom ? custom : ""} 
                     `}
         >
-            {Icon && <Icon size={24} />}
             {label}
         </button>
     );

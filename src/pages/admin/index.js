@@ -25,7 +25,7 @@ export default function Admin() {
                     label="Нэр"
                     register={register}
                     errors={errors}
-                    required
+                    required={true}
                     type="text"
                 />
                 <Input
@@ -33,7 +33,7 @@ export default function Admin() {
                     label="Бренд"
                     register={register}
                     errors={errors}
-                    required
+                    required={true}
                     type="text"
                 />
                 <Input
@@ -41,7 +41,7 @@ export default function Admin() {
                     label="Категори"
                     register={register}
                     errors={errors}
-                    required
+                    required={true}
                     type="text"
                 />
                 <Input
