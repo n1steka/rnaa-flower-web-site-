@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import Image from "next/image";
 export default function ProductItem({ product }) {
   const { state, dispatch } = useContext(Store);
-
+  console.log(" ----------", product._id)
   const addCart = () => {
     const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
@@ -16,7 +16,6 @@ export default function ProductItem({ product }) {
       notif();
       return;
     }
-
     dispatch({
       type: "CART_ADD_ITEM",
       payload: { ...product, quantity },
@@ -30,18 +29,18 @@ export default function ProductItem({ product }) {
 
   return (
     <div className="card">
-      <Link href={`/product/${product.slug}`}>
+      <Link href={`/product/${product._id}`}>
         <Image
           width={500}
           height={300}
-          src={`${product.image}`}
+          src={`/uploads/${product.image}`}
           alt={product.name}
           className="rounded shadow"
         />
       </Link>
       <div className="flex flex-col items-center p-5 border">
-        <Link href={`/product/${product.slug}`}>
-          <h2 className="text-lg">{product.slug}</h2>
+        <Link href={`/product/${product._id}`}>
+          <h2 className="text-lg">{product._id}</h2>
         </Link>
         <p className="mb-2">{product.brand}</p>
         <p className="">{product.price}</p>
