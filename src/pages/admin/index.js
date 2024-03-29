@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Input from './input';
 import Button from './button';
@@ -7,6 +7,14 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 export default function Admin() {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [product, setProduct] = useState([]);
+
+    useEffect(() => {
+        axios.get('/api/product').then((res) => {
+            setProduct(res.data.data)
+        }).catch((err) => { console.log(err) })
+    }, [])
+    console.log(product)
     const [isLoading, setIsLoading] = useState(false);
     const onSubmit = async (data) => {
         setIsLoading(true);
@@ -34,7 +42,13 @@ export default function Admin() {
             console.error("Error occurred:", error);
         }
     };
-
+    const deleteItem = (id) => {
+        axios.delete(`/api/product/${id}`).then((res) => {
+            if (res.data.data) {
+                alert("Устгаглаа")
+            }
+        })
+    }
     return (
         <div className='w-full flex justify-center mt-20'>
             <ToastContainer />
@@ -83,8 +97,52 @@ export default function Admin() {
                     type="file"
                 />
                 <Button label={isLoading ? "Уншиж байна" : " Бараа нэмэх"} onClick={handleSubmit(onSubmit)} />
-
+                <div className="overflow-x-auto">
+                    <table className="min-w-full divide-y divide-gray-200">
+                        <thead className="bg-gray-50">
+                            <tr>
+                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Нэр
+                                </th>
+                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Категори
+                                </th>
+                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Бренд
+                                </th>
+                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Устгах
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className="bg-white divide-y divide-gray-200">
+                            {
+                                product.map((el) => {
+                                    return (
+                                        <tr>
+                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                {el.name}
+                                            </td>
+                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                {el.category}
+                                            </td>
+                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                {el.bran}
+                                            </td><td className="px-6 py-4 whitespace-nowrap" >
+                                                <button onClick={() => deleteItem(el._id)} className="p-2 bg-red-500 rounded-3xl"  > X </button>
+                                            </td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                            {/* Add more rows as needed */}
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
+
+
         </div>
     );
 }

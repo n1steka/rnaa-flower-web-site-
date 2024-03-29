@@ -1,5 +1,5 @@
 import connectDB from "../../../../utils/db";
-import { handleGetDetailRequest, handlePostRequest } from "../../../../utils/controller/product-controller";
+import { handleDeleteRequest, handleGetDetailRequest, handlePostRequest } from "../../../../utils/controller/product-controller";
 import util from 'util';
 import upload from "../../../../utils/middleware/fileupload";
 export const config = {
@@ -14,6 +14,9 @@ export default async function handler(req, res) {
         switch (req.method) {
             case 'GET':
                 await handleGetDetailRequest(req, res);
+                break;
+            case 'DELETE':
+                await handleDeleteRequest(req, res);
                 break;
             case 'POST':
                 await uploadPromise(req, res);
