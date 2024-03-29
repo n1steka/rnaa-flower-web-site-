@@ -42,9 +42,9 @@ export default function ProductItem({ product }) {
       </Link>
       <div className="flex flex-col items-center p-5 border">
         <Link href={`/product/${product._id}`}>
-          <h2 className="text-lg">{product._id}</h2>
+          <h2 className="text-lg text-blue-500"> Нэр  : {product.name}</h2>
         </Link>
-        <p className="mb-2">{product.brand}</p>
+        <p className="mb-2 text-purple-300">{product.brand}</p>
         {/* <p className="">{product.price}</p>
         <button
           onClick={addCart}
