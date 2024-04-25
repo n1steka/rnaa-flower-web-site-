@@ -20,7 +20,7 @@ export default function CoverCom() {
       const formData = new FormData();
       formData.append("file", data.file[0]);
       const response = await axios.put(
-        "/api/cover/662aa71de56e73290c3cd1a1",
+        "/api/cover/662aac80e56e73290c3cd1d2",
         formData,
         {
           headers: {

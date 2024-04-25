@@ -3,7 +3,7 @@ import {
   handleDeleteRequest,
   handleGetDetailRequest,
   handlePostRequest,
-  handlePutRequest,
+  update,
 } from "../../../../utils/controller/coverController";
 import util from "util";
 import upload from "../../../../utils/middleware/fileupload";
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
         break;
       case "PUT":
         await uploadPromise(req, res);
-        await handlePutRequest(req, res);
+        await update(req, res);
         break;
       default:
         res.status(405).json({ success: false, error: "Method Not Allowed" });

@@ -1,9 +1,13 @@
 import mongoose from "mongoose";
 
-const coverSchema = new mongoose.Schema({
-  photo: { type: String },
+const additionalSchema = new mongoose.Schema({
+  image: {
+    type: String,
+    default: "",
+  },
 });
 
-const Cover = mongoose.models.Product || mongoose.model("Cover", coverSchema);
+const Additional =
+  mongoose.models.Product || mongoose.model("Cover", additionalSchema);
 
-export default Cover;
+export default Additional;

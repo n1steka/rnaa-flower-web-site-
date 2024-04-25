@@ -1,8 +1,8 @@
-import Template from "../../models/cover-model";
+import Cover from "../../models/cover-model";
 
 export async function handleGetRequest(req, res) {
   try {
-    const data = await Template.find();
+    const data = await Cover.find();
     res.status(200).json({ success: true, data });
   } catch (error) {
     console.error("Error in GET handler:", error.message);
@@ -14,7 +14,7 @@ export async function handleGetDetailRequest(req, res) {
   try {
     const { id } = req.query;
     console.log(id);
-    const data = await Template.findById(id);
+    const data = await Cover.findById(id);
     res.status(200).json({ success: true, data });
   } catch (error) {
     console.error("Error in GET handler:", error.message);
@@ -23,7 +23,7 @@ export async function handleGetDetailRequest(req, res) {
 }
 export async function handleGetRequestDetail(req, res) {
   try {
-    const data = await Template.findById(req.params.id);
+    const data = await Cover.findById(req.params.id);
     res.status(200).json({ success: true, data });
   } catch (error) {
     console.error("Error in GET handler:", error.message);
@@ -35,9 +35,9 @@ export async function handlePostRequest(req, res) {
   try {
     const input = {
       ...req.body,
-      photo: req.file ? req.file.filename : "no photo",
+      image: req.file ? req.file.filename : "no photo",
     };
-    const data = await Template.create(input);
+    const data = await Cover.create(input);
 
     res.status(201).json({
       success: true,
@@ -56,7 +56,7 @@ export async function handlePostRequest(req, res) {
 export async function handleDeleteRequest(req, res) {
   try {
     const { id } = req.query;
-    const data = await Template.findByIdAndDelete(id, {
+    const data = await Cover.findByIdAndDelete(id, {
       new: true,
     });
     return res.status(200).json({
@@ -73,7 +73,7 @@ export async function handleDeleteRequest(req, res) {
   }
 }
 
-export async function handlePutRequest(req, res) {
+export async function update(req, res) {
   try {
     const { id } = req.query;
 
@@ -87,10 +87,10 @@ export async function handlePutRequest(req, res) {
     console.log(req.file.filename);
     const input = {
       ...req.body,
-      photo: req.file?.filename,
+      image: req.file?.filename,
     };
 
-    const data = await Template.findByIdAndUpdate(id, input, { new: true });
+    const data = await Cover.findByIdAndUpdate(id, input, { new: true });
 
     if (!data) {
       return res.status(404).json({
