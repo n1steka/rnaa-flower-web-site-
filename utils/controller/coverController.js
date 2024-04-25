@@ -1,4 +1,4 @@
-import Template from "../../models/product-model";
+import Template from "../../models/cover-model";
 
 export async function handleGetRequest(req, res) {
   try {
@@ -35,13 +35,13 @@ export async function handlePostRequest(req, res) {
   try {
     const input = {
       ...req.body,
-      image: req.file ? req.file.filename : "no photo",
+      photo: req.file ? req.file.filename : "no photo",
     };
     const data = await Template.create(input);
 
     res.status(201).json({
       success: true,
-      msg: "Post created successfully",
+      msg: "Post created asdasd",
       data,
     });
   } catch (error) {
@@ -76,28 +76,48 @@ export async function handleDeleteRequest(req, res) {
 export async function handlePutRequest(req, res) {
   try {
     const { id } = req.query;
-    const oldData = await Template.findById(id);
-    if (!oldData) {
-      return res.status(404).json({
+
+    if (!id) {
+      return res.status(400).json({
         success: false,
-        error: "Record not found",
+        msg: "Missing or invalid ID",
       });
     }
+
+    console.log(req.file.filename);
     const input = {
       ...req.body,
       photo: req.file?.filename,
     };
+
     const data = await Template.findByIdAndUpdate(id, input, { new: true });
-    res.status(201).json({
+
+    if (!data) {
+      return res.status(404).json({
+        success: false,
+        msg: "Resource not found",
+      });
+    }
+
+    res.status(200).json({
       success: true,
-      msg: "PUT updated successfully",
+      msg: "Post updated successfully",
       data,
     });
   } catch (error) {
-    console.error("Error in PUT handler:", error.message);
+    console.error("Error in PUT handler:", error);
+
+    // Determine if the error is related to database issues
+    if (error.name === "CastError") {
+      return res.status(400).json({
+        success: false,
+        msg: "Invalid ID format",
+      });
+    }
+
     res.status(500).json({
       success: false,
-      error: "Internal Server Error",
+      msg: "Internal Server Error",
     });
   }
 }
