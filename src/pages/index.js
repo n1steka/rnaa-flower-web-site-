@@ -26,7 +26,7 @@ export default function Home() {
       </Layouts>
     );
   }
-  const img = data.filter((item) => item._id === "662aac80e56e73290c3cd1d2");
+  const img = data.filter((item) => item._id === "662b36909dbfdb42179c16a1");
   console.log("asds", img[0]);
 
   return (

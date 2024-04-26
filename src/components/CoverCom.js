@@ -20,7 +20,7 @@ export default function CoverCom() {
       const formData = new FormData();
       formData.append("file", data.file[0]);
       const response = await axios.put(
-        "/api/cover/662aac80e56e73290c3cd1d2",
+        "/api/cover/662b36909dbfdb42179c16a1",
         formData,
         {
           headers: {
@@ -39,9 +39,9 @@ export default function CoverCom() {
     }
   };
   return (
-    <div>
+    <div className="mx-4">
       <ToastContainer />
-      <h1 className="text-2xl font-semibold my-4"> Cover зураг оруулах</h1>
+      <h1 className="text-2xl font-semibold my-4 "> Cover зураг оруулах</h1>
       <Input
         id="file"
         label="Cover"
