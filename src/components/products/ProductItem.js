@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 export default function ProductItem({ product }) {
   // const { state, dispatch } = useContext(Store);
-  console.log(" ----------", product._id)
+  console.log(" ----------", product._id);
   // const addCart = () => {
   //   const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
   //   const quantity = existItem ? existItem.quantity + 1 : 1;
@@ -29,10 +29,13 @@ export default function ProductItem({ product }) {
   // };
 
   return (
-    <div className="card">
+    <div
+      className={`${
+        product._id === "662b36909dbfdb42179c16a1" ? "hidden" : null
+      } card `}
+    >
       <Link href={`/product/${product._id}`}>
         <Image
-
           width={500}
           height={300}
           src={`/uploads/${product.image}`}
@@ -42,7 +45,7 @@ export default function ProductItem({ product }) {
       </Link>
       <div className="flex flex-col items-center p-5 border">
         <Link href={`/product/${product._id}`}>
-          <h2 className="text-lg text-blue-500"> Нэр  : {product.name}</h2>
+          <h2 className="text-lg text-blue-500"> Нэр : {product.name}</h2>
         </Link>
         <p className="mb-2 text-purple-300">{product.brand}</p>
         {/* <p className="">{product.price}</p>
